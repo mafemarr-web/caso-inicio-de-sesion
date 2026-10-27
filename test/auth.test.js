@@ -41,6 +41,18 @@ test('registra un usuario y permite iniciar sesión con sus credenciales', async
   assert.equal(registration.status, 201);
   assert.deepEqual(await registration.json(), { mensaje: 'Registro satisfactorio.' });
 
+  const secondRegistration = await postJson('/api/auth/register', {
+    usuario: 'aprendiz02',
+    contrasena: 'OtraClaveSegura123',
+  });
+  assert.equal(secondRegistration.status, 201);
+
+  const savedUsers = JSON.parse(
+    await fs.readFile(path.join(temporaryDirectory, 'usuarios.json'), 'utf8'),
+  );
+  assert.equal(savedUsers.length, 2);
+  assert.notEqual(savedUsers[0].passwordHash, 'ClaveSegura123');
+
   const login = await postJson('/api/auth/login', {
     usuario: 'aprendiz01',
     contrasena: 'ClaveSegura123',
