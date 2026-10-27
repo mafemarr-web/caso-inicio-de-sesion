@@ -43,7 +43,7 @@ function createAuthService(userStore) {
   return {
     async register({ usuario, contrasena } = {}) {
       if (typeof usuario !== 'string' || typeof contrasena !== 'string') {
-        invalidRequest('Debe enviar usuario y contrasena como texto.');
+        invalidRequest('Debe enviar usuario y contraseña como texto.');
       }
 
       const username = normalizeUsername(usuario);
@@ -51,7 +51,7 @@ function createAuthService(userStore) {
         invalidRequest('El usuario debe tener entre 3 y 32 caracteres: letras, números, punto, guion o guion bajo.');
       }
       if (contrasena.length < 8 || contrasena.length > 128) {
-        invalidRequest('La contrasena debe tener entre 8 y 128 caracteres.');
+        invalidRequest('La contraseña debe tener entre 8 y 128 caracteres.');
       }
 
       const user = {
@@ -70,7 +70,7 @@ function createAuthService(userStore) {
 
     async login({ usuario, contrasena } = {}) {
       if (typeof usuario !== 'string' || typeof contrasena !== 'string') {
-        invalidRequest('Debe enviar usuario y contrasena como texto.');
+        invalidRequest('Debe enviar usuario y contraseña como texto.');
       }
 
       const username = normalizeUsername(usuario);
@@ -80,10 +80,10 @@ function createAuthService(userStore) {
         : false;
 
       if (!authenticated) {
-        throw new AuthError('Error en la autenticacion.', 401);
+        throw new AuthError('Error en la autenticación.', 401);
       }
 
-      return { mensaje: 'Autenticacion satisfactoria.' };
+      return { mensaje: 'Autenticación satisfactoria.' };
     },
   };
 }

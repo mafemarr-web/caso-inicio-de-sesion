@@ -20,7 +20,7 @@ async function readJsonBody(request) {
   for await (const chunk of request) {
     totalBytes += chunk.length;
     if (totalBytes > MAX_BODY_BYTES) {
-      throw new AuthError('El contenido de la solicitud supera el limite permitido.', 413);
+      throw new AuthError('El contenido de la solicitud supera el límite permitido.', 413);
     }
     chunks.push(chunk);
   }
@@ -28,7 +28,7 @@ async function readJsonBody(request) {
   try {
     return JSON.parse(Buffer.concat(chunks).toString('utf8'));
   } catch {
-    throw new AuthError('El cuerpo debe ser un JSON valido.', 400);
+    throw new AuthError('El cuerpo debe ser un JSON válido.', 400);
   }
 }
 
@@ -65,7 +65,7 @@ function createApp({ userStore } = {}) {
 
       // Los errores inesperados quedan registrados sin exponer detalles al cliente.
       console.error('Error interno del servicio:', error);
-      return sendJson(response, 500, { mensaje: 'Ocurrio un error interno del servicio.' });
+      return sendJson(response, 500, { mensaje: 'Ocurrió un error interno del servicio.' });
     }
   });
 }
@@ -75,7 +75,7 @@ if (require.main === module) {
   const server = createApp();
 
   server.listen(port, () => {
-    console.log(`API de autenticacion disponible en http://localhost:${port}`);
+    console.log(`API de autenticación disponible en http://localhost:${port}`);
   });
 }
 

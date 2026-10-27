@@ -58,7 +58,7 @@ test('registra un usuario y permite iniciar sesión con sus credenciales', async
     contrasena: 'ClaveSegura123',
   });
   assert.equal(login.status, 200);
-  assert.deepEqual(await login.json(), { mensaje: 'Autenticacion satisfactoria.' });
+  assert.deepEqual(await login.json(), { mensaje: 'Autenticación satisfactoria.' });
 });
 
 test('rechaza una contraseña incorrecta y un usuario duplicado', async () => {
@@ -67,7 +67,7 @@ test('rechaza una contraseña incorrecta y un usuario duplicado', async () => {
     contrasena: 'OtraClave123',
   });
   assert.equal(wrongPassword.status, 401);
-  assert.deepEqual(await wrongPassword.json(), { mensaje: 'Error en la autenticacion.' });
+  assert.deepEqual(await wrongPassword.json(), { mensaje: 'Error en la autenticación.' });
 
   const duplicate = await postJson('/api/auth/register', {
     usuario: 'APRENDIZ01',

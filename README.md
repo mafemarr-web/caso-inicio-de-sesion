@@ -65,7 +65,7 @@ Respuesta satisfactoria (`200`):
 
 ```json
 {
-  "mensaje": "Autenticacion satisfactoria."
+  "mensaje": "Autenticación satisfactoria."
 }
 ```
 
@@ -73,7 +73,7 @@ Si las credenciales no coinciden, responde `401`:
 
 ```json
 {
-  "mensaje": "Error en la autenticacion."
+  "mensaje": "Error en la autenticación."
 }
 ```
 
