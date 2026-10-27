@@ -1,0 +1,13 @@
+{
+  "name": "api-autenticacion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Servicio web de registro e inicio de sesión para la evidencia de Construcción API.",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
